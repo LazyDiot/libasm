@@ -11,7 +11,7 @@ ft_write:
     .error:
         neg rax ; because using imul rax, rax, -1 will get me flamed and shamed
         mov rdi, rax
-        call __errno_location
+        call __errno_location wrt ..plt; With Respect To the Procedure Linkage Table (replaces -no-pie flag)
         mov [rax], rdi
         mov rax, -1
         ret
