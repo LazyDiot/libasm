@@ -1,4 +1,7 @@
 global ft_strdup
+extern ft_strlen
+extern ft_strcpy
+extern malloc
 section .text
 
 ;malloc sets errno if it fails, not my job here
@@ -17,3 +20,5 @@ ft_strdup:
     .error:
         xor rax, rax
         ret
+
+section .note.GNU-stack noalloc noexec nowrite progbits

@@ -9,9 +9,11 @@ ft_read:
     jl .error
     ret
     .error:
-        neg rax ; because using imul rax, rax, -1 will get me flamed and shamed
+        neg rax ;because using imul rax, rax, -1 will get me flamed and shamed
         mov rdi, rax
         call __errno_location
         mov [rax], rdi
         mov rax, -1
         ret
+
+section .note.GNU-stack noalloc noexec nowrite progbits
