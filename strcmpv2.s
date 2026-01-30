@@ -11,8 +11,8 @@ ft_strcmp:
         ret
     .ne:
         movzx rax, byte [rsi - 1]
-        movzx rbx, byte [rdi - 1]
-        sub rax, rbx
+        movzx rcx, byte [rdi - 1]
+        sub rax, rcx
         ret
 
 section .note.GNU-stack noalloc noexec nowrite progbits
