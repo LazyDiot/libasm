@@ -7,19 +7,21 @@ section .text
 ;malloc sets errno if it fails, not my job here
 
 ft_strdup:
-    push rdi ;rsi clobbered yet again....
+    push rdi
     call ft_strlen
     inc rax
     mov rdi, rax
-    call malloc wrt ..plt ;With Respect To the Procedure Linkage Table (replaces -no-pie flag)
+    call malloc wrt ..plt
     test rax, rax
-    pop rsi ;restores original pointer
+    pop rsi 
     jz .error
+
     mov rdi, rax
+    sub rsp, 8
     call ft_strcpy
+    add rsp, 8
     ret
     .error:
-        xor rax, rax
         ret
 
 section .note.GNU-stack noalloc noexec nowrite progbits
