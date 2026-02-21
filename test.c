@@ -32,12 +32,13 @@ int main()
     printf("strlen's\nmine : %li\tlibc : %li\n", ft_strlen(vlong), strlen(vlong));
 
     printf("\nread's\n");
-    int opfd = open("read.s", O_RDONLY), opfd2 = open("write.s", O_RDONLY);
-    ft_read(opfd, my_b_read, 25);
-    read(opfd2, lib_b_read, 25);
+    int opfd = open("read.s", O_RDONLY);
+    int i = ft_read(opfd, my_b_read, 25);
     close(opfd);
-    close(opfd2);
-    printf("mine : %s\nlibc : %s\n", my_b_read, lib_b_read);
+    opfd = open("read.s", O_RDONLY);
+    int j = read(opfd, lib_b_read, 25);
+    close(opfd);
+    printf("mine : %.*s bytes read : %i \nlibc : %.*s bytes read : %i\n",i,  my_b_read, i, j, lib_b_read, j);
 
     printf("\ncpy's\nmine : %s\tlibc : %s\n", ft_strcpy(cpy, vlong), strcpy(cpy1, vlong));
     printf("cpy's\nmine : %s\tlibc : %s\n", ft_strcpy(cpy, s2), strcpy(cpy1, s2));
